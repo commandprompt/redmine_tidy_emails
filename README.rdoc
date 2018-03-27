@@ -1,0 +1,5 @@
+redmine_remove_attachment_list_from_emails
+This plugin removes the attachment list from the issue update email nofications
+
+Installation Notes
+Use git to clone to plugins/, reload the redmine server.
