@@ -1,7 +1,7 @@
 <% if @journal.private_notes? %>
   (<%= l(:field_private_notes) %>)
 <% end %>
-<%= l(:text_issue_updated, :id => link_to("##{@issue.id}", @issue_url), :author => h(@journal.user)).html_safe %>
+<%= l(:text_issue_updated, id: link_to("##{@issue.id}", @issue_url), author: h(@journal.user)).html_safe %>
 <hr />
 
 <ul class="journal details">
@@ -10,6 +10,7 @@
 <% end %>
 </ul>
 
-<%= textilizable(@journal, :notes, :only_path => false) %>
+<%= textilizable(@journal, :notes, only_path: false) %>
 <hr />
-<%= render :partial => 'issue', :formats => [:html], :locals => { :issue => @issue, :users => @users, :issue_url => @issue_url, :skip_body => true } %>
+<%- @skip_body = RedmineCleanerNotifications.settings['remove_issue_edit_description'] == 'true'%>
+<%= render partial: 'issue', formats: [:html], locals: { issue: @issue, users: @users, issue_url: @issue_url, skip_body: @skip_body } %>

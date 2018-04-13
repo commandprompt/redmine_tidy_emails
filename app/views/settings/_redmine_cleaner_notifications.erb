@@ -1,0 +1,57 @@
+<%= javascript_tag do %>
+  function update_preview() {
+    var toggle_description = $('#settings_remove_issue_edit_description').is(':checked');
+    var toggle_empty_fields = $('#settings_remove_empty_fields').is(':checked');
+    $('#issue_description').toggle(!toggle_description);
+    $('#empty_fields').toggle(!toggle_empty_fields);
+  }
+  $(document).ready(function(){
+    update_preview();
+    $('#settings_remove_issue_edit_description').click(update_preview);
+    $('#settings_remove_empty_fields').click(update_preview);
+  });
+
+<% end %>
+<fieldset>
+    <legend><%=t('redmine_cleaner_emails.fieldset_issue_notifications') %></legend>
+    <p>
+        <%= label_tag 'settings_remove_issue_edit_description', t('redmine_cleaner_emails.label_remove_description') %>
+        <%= check_box_tag "settings[remove_issue_edit_description]", true, settings['remove_issue_edit_description'] == 'true' %>
+        <br/>
+        <%= label_tag 'settings_remove_empty_fields', t('redmine_cleaner_emails.label_remove_empty_fields') %>
+        <%= check_box_tag "settings[remove_empty_fields]", true, settings['remove_empty_fields'] == 'true' %>
+    </p>
+    <br/>
+    <legend><%=t('redmine_cleaner_emails.fieldset_message_preview') %></legend>
+    <p>
+    <pre>
+  Issue #9999 has been updated by Redmine Admin.
+
+
+  Test Update
+
+  ----------------------------------------
+  Bug #9999: Test Issue
+  http://localhost:3000/issues/9999#change-99
+
+  * Author: Redmine Admin
+  * Status: New
+  * Priority: Normal
+  * Assignee: testproject -<span id="empty_fields">
+  * Category: 
+  * Target version:</span>
+  ----------------------------------------
+  <span id='issue_description'>Issue Description:
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+  -- 
+  You have received this notification because you have either subscribed to it, or are involved in it.
+  To change your notification preferences, please click here: http://hostname/my/account
+  ********
+    </pre>
+    </p>
+</fieldset>
+

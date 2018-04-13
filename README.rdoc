@@ -1,5 +1,11 @@
-redmine_remove_attachment_list_from_emails
-This plugin removes the attachment list from the issue update email nofications
+redmine_cleaner_notifications
+This plugin allows to customize what to include in issue create/update email notifications
+
+Configuration options include
+Disable inclusion of issue description and attached files list on issue edit notifications
+Disable inclusion of empty fields from issue overview section
 
 Installation Notes
-Use git to clone to plugins/, reload the redmine server.
+Use git to clone to plugins
+Run plugin migrations
+Reload the redmine server.
