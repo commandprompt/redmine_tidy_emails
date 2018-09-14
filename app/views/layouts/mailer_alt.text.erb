@@ -1,7 +1,8 @@
 <% if Setting.emails_header.present? -%>
-	<% unless @skip_header -%>
-		<%= Setting.emails_header %>
-	<% end -%>
+<% unless @skip_header -%>
+<%= Setting.emails_header %>
+
+<% end -%>
 <% end -%>
 <%= yield %>
 <% if Setting.emails_footer.present? -%>
