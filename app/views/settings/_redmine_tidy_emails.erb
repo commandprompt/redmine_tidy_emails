@@ -17,19 +17,20 @@
 <% end %>
 <fieldset>
     <legend><%=t('redmine_tidy_emails.fieldset_issue_notifications') %></legend>
-    <p>
+      <p>
         <%= label_tag 'settings_remove_issue_edit_description', t('redmine_tidy_emails.label_remove_description') %>
         <%= check_box_tag "settings[remove_issue_edit_description]", true, settings['remove_issue_edit_description'] == 'true' %>
-        <br/>
+        <br>
         <%= label_tag 'settings_remove_empty_fields', t('redmine_tidy_emails.label_remove_empty_fields') %>
         <%= check_box_tag "settings[remove_empty_fields]", true, settings['remove_empty_fields'] == 'true' %>
-        <br/>
+        <br>
         <%= label_tag 'settings_remove_header_on_update', t('redmine_tidy_emails.label_remove_header_on_update') %>
         <%= check_box_tag "settings[remove_header_on_update]", true, settings['remove_header_on_update'] == 'true' %>
+        <br>
     </p>
-    <br/>
+</fieldset>
     <legend><%=t('redmine_tidy_emails.fieldset_message_preview') %></legend>
-    <p>
+
     <pre>
 <% if Setting.emails_header.present? -%>
 <span id='issue_header'><%= Setting.emails_header %></span>
@@ -61,6 +62,6 @@
   To change your notification preferences, please click here: http://hostname/my/account
   ********
     </pre>
-    </p>
-</fieldset>
+
+
 
