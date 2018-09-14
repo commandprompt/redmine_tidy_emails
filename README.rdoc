@@ -1,9 +1,10 @@
-redmine_cleaner_notifications
-This plugin allows to customize what to include in issue create/update email notifications
+redmine_tidy_notifications
+This plugin allows to customize what to include in issue email notifications
 
 Configuration options include
 Disable inclusion of issue description and attached files list on issue edit notifications
 Disable inclusion of empty fields from issue overview section
+Disable inclusion of email header (defined in Redmine notification settings)
 
 Installation Notes
 Use git to clone to plugins

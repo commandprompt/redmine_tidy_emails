@@ -1,7 +1,8 @@
 # English strings go here for Rails i18n
 en:
-  redmine_cleaner_emails:
+  redmine_tidy_emails :
     label_remove_description: "Remove issue description"
     label_remove_empty_fields: "Remove empty fields from issue overview"
-    fieldset_issue_notifications: "Issue email notifications"
+    label_remove_header_on_update: "Do not include email header on issue update"
+    fieldset_issue_notifications: "Issue email customization"
     fieldset_message_preview: "Message Preview:"

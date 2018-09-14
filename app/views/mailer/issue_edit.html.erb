@@ -12,5 +12,4 @@
 
 <%= textilizable(@journal, :notes, only_path: false) %>
 <hr />
-<%- @skip_body = RedmineCleanerNotifications.settings['remove_issue_edit_description'] == 'true'%>
 <%= render partial: 'issue', formats: [:html], locals: { issue: @issue, users: @users, issue_url: @issue_url, skip_body: @skip_body } %>
