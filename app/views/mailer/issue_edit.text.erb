@@ -9,4 +9,7 @@
 
 <% end -%>
 ----------------------------------------
+<%if not defined? @users %>
+	<% @users = [@user] %>
+<%end%>
 <%= render partial: 'issue', formats: [:text], locals: { issue: @issue, users: @users, issue_url: @issue_url, skip_body: @skip_body } %>

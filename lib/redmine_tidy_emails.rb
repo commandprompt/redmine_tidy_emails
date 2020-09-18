@@ -4,7 +4,8 @@ module RedmineTidyEmails
 
     def self.included(base)
       base.class_eval do
-        alias_method_chain :email_issue_attributes, :cleanup
+        alias_method :email_issue_attributes_without_cleanup, :email_issue_attributes
+        alias_method :email_issue_attributes, :email_issue_attributes_with_cleanup
       end
     end
 
@@ -12,7 +13,6 @@ module RedmineTidyEmails
       items = email_issue_attributes_without_cleanup(issue, user, html)
 
       return items unless RedmineTidyEmails.settings['remove_empty_fields']
-
       if html
         items.reject! {|item| item =~ /\<strong\>.*:\ \<\/strong\>\z/ }
       else
@@ -28,14 +28,15 @@ module RedmineTidyEmails
   module MailerPatch
     def self.included(base)
       base.class_eval do
-        alias_method_chain :issue_edit, :flags
+        alias_method :issue_edit_without_flags, :issue_edit
+        alias_method :issue_edit, :issue_edit_with_flags
       end
     end
 
-   def issue_edit_with_flags(issue, to_users, cc_users)
+   def issue_edit_with_flags(*args)
       @skip_header = RedmineTidyEmails.settings['remove_header_on_update'] == 'true'
       @skip_body = RedmineTidyEmails.settings['remove_issue_edit_description'] == 'true'
-      issue_edit_without_flags(issue, to_users, cc_users)
+      issue_edit_without_flags(*args)
     end
   end
 
