@@ -1,16 +1,13 @@
 <%= javascript_tag do %>
   function update_preview() {
     var toggle_description = $('#settings_remove_issue_edit_description').is(':checked');
-    var toggle_empty_fields = $('#settings_remove_empty_fields').is(':checked');
     var toggle_header = $('#settings_remove_header_on_update').is(':checked');
     $('#issue_description').toggle(!toggle_description);
-    $('#empty_fields').toggle(!toggle_empty_fields);
     $('#issue_header').toggle(!toggle_header);
   }
   $(document).ready(function(){
     update_preview();
     $('#settings_remove_issue_edit_description').click(update_preview);
-    $('#settings_remove_empty_fields').click(update_preview);
     $('#settings_remove_header_on_update').click(update_preview);
   });
 
@@ -20,9 +17,6 @@
       <p>
         <%= label_tag 'settings_remove_issue_edit_description', t('redmine_tidy_emails.label_remove_description') %>
         <%= check_box_tag "settings[remove_issue_edit_description]", true, settings['remove_issue_edit_description'] == 'true' %>
-        <br>
-        <%= label_tag 'settings_remove_empty_fields', t('redmine_tidy_emails.label_remove_empty_fields') %>
-        <%= check_box_tag "settings[remove_empty_fields]", true, settings['remove_empty_fields'] == 'true' %>
         <br>
         <%= label_tag 'settings_remove_header_on_update', t('redmine_tidy_emails.label_remove_header_on_update') %>
         <%= check_box_tag "settings[remove_header_on_update]", true, settings['remove_header_on_update'] == 'true' %>
@@ -47,9 +41,6 @@
   * Author: Redmine Admin
   * Status: New
   * Priority: Normal
-  * Assignee: John Doe<span id="empty_fields">
-  * Category: 
-  * Target version:</span>
   ----------------------------------------
   <span id='issue_description'>Issue Description:
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
